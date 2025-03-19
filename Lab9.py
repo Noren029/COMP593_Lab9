@@ -1,6 +1,14 @@
+""" COMP-593
+    Scripting Lab 9
+    Norlon Sibug
+    10312229
+    nsibug@flemingcollege.ca
+""" 
+
 from tkinter import *
 from tkinter import ttk
 from pokeapi import get_pokemon_info
+from tkinter import messagebox
 
 def main():
     root = Tk()
@@ -36,6 +44,8 @@ def main():
             bar_Special_Defense['value'] = poke_info['stats'][4]['base_stat']
             bar_Speed['value'] = poke_info['stats'][5]['base_stat']
         else:
+            messagebox.showerror(message= f"I can't find this pokemon on the list {pokemon} please try again.", title="Error")
+
             print(f"No info received for {pokemon}.")
 
     
