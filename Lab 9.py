@@ -1,3 +1,10 @@
+
+""" COMP-593
+    Scripting Lab 9
+    Norlon Sibug
+    10312229
+    nsibug@flemingcollege.ca
+""" 
 from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
