@@ -7,7 +7,7 @@
 
 from tkinter import *
 from tkinter import ttk
-from pokeapi import get_pokemon_info
+from poke_api import get_pokemon_info
 from tkinter import messagebox
 
 def main():
