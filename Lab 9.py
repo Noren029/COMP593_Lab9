@@ -9,12 +9,59 @@ from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
 import requests
+import pygame
 from io import BytesIO
 from poke_api import get_pokemon_info  # Ensure this function fetches data from PokéAPI
+
+def play_music():
+    pygame.mixer.init()  # Initialize the mixer
+    pygame.mixer.music.load("pokemon_song.mp3")  # Load your music file
+    pygame.mixer.music.set_volume(0.5)  # Set the volume to 10%
+    pygame.mixer.music.play(-1)  # Play in a loop (-1 means infinite loop)
+
+def increase_volume():
+        current_volume = pygame.mixer.music.get_volume()
+        if current_volume < 1.0:
+            pygame.mixer.music.set_volume(max(current_volume + 0.1, 1.0))
+
+def decrease_volume():
+        current_volume = pygame.mixer.music.get_volume()
+        if current_volume > 0.0:
+            pygame.mixer.music.set_volume(max(current_volume - 0.1, 0.0))
+
+
+def puase_music():
+    pygame.mixer.music.pause()
+
+def unpause_music():
+    pygame.mixer.music.unpause()
 
 def main():
     root = Tk()
     root.title("Pokémon Information")
+    root.geometry("800x600")
+
+    play_music()
+
+    bg_img = Image.open('images.png')
+    bg_img = bg_img.resize((800, 600))
+    bg_img = ImageTk.PhotoImage(bg_img)
+    bg_label = Label(root, image=bg_img)
+    bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+    
+    bg_label.image = bg_img  # Keep a reference to avoid garbage collection
+
+    btn_volume_up = ttk.Button(root, text="Volume Up", command=increase_volume)
+    btn_volume_up.place(x=10, y=250)
+
+    btn_volume_down = ttk.Button(root, text="Volume Down", command=decrease_volume)
+    btn_volume_down.place(x=150, y=250)
+
+    btn_pause = ttk.Button(root, text="Pause", command=puase_music)
+    btn_pause.place(x=10, y=280)
+    
+    btn_unpause = ttk.Button(root, text="Unpause", command=unpause_music)
+    btn_unpause.place(x=150, y=280)
 
     # User input frame
     frm_input = ttk.Frame(root)
@@ -116,7 +163,13 @@ def main():
 
     # Pokémon Image
     lbl_image = Label(root)
-    lbl_image.grid(row=2, column=0, columnspan=2, pady=10)
+    lbl_image.grid(row=10, column=0,  padx=40, pady=(5, 10), sticky=W)
+
+    img = Image.open('pokemon1.png')
+    img = img.resize((200, 100))
+    img = ImageTk.PhotoImage(img)
+    banner = Label(root, image=img)
+    banner.grid(row=0, column=3, sticky=E)
 
     root.mainloop()
 
