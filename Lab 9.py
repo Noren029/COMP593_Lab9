@@ -4,6 +4,15 @@
     Norlon Sibug
     10312229
     nsibug@flemingcollege.ca
+
+    # Citation for the video:
+# Title: "Python GUI With Tkinter Tutorial | Make A Pokedex GUI Application With Tkinter"
+# Creator: Coding Abs
+# Date Published: January 19, 2021
+# URL: https://www.youtube.com/watch?v=T_Ja8_R0Bio
+# Note: This code uses the video for educational purposes only.
+# This video was used as a resource for understanding Python programming basics.
+
 """ 
 from tkinter import *
 from tkinter import ttk, messagebox
@@ -16,7 +25,7 @@ from poke_api import get_pokemon_info  # Ensure this function fetches data from 
 def play_music():
     pygame.mixer.init()  # Initialize the mixer
     pygame.mixer.music.load("pokemon_song.mp3")  # Load your music file
-    pygame.mixer.music.set_volume(0.5)  # Set the volume to 10%
+    pygame.mixer.music.set_volume(0.1)  # Set the volume to 10%
     pygame.mixer.music.play(-1)  # Play in a loop (-1 means infinite loop)
 
 def increase_volume():
